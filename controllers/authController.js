@@ -9,7 +9,7 @@ PORT = process.env.PORT || 3000
 const JWT_Secret = process.env.JWT_SECRET
 
 const googleLogin = (req, res) => {
-    const googleAuthUrl =`https://accounts.google.com/o/oauth2/auth?client_id=${process.env.GOOGLE_CLIENT_ID}&redirect_uri=http://localhost:${PORT}/auth/google/callback&response_type=code&scope=profile email`
+    const googleAuthUrl =`https://accounts.google.com/o/oauth2/auth?client_id=${process.env.GOOGLE_CLIENT_ID}&redirect_uri=https://memora-frontend-ashy.vercel.app/auth/google/callback&response_type=code&scope=profile email`
 
     res.redirect(googleAuthUrl)
 }
@@ -27,7 +27,7 @@ const googleCallback = async (req, res) => {
                 client_secret: process.env.GOOGLE_CLIENT_SECRET,
                 code,
                 grant_type: 'authorization_code',
-                redirect_uri: `http://localhost:${PORT}/auth/google/callback`,
+                redirect_uri: `https://memora-frontend-ashy.vercel.app/auth/google/callback`,
             },
             {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
