@@ -12,7 +12,7 @@ app.use(express.json())
 connectToDb()
 
 PORT = process.env.PORT || 3000
-app.use(cors({credentials: true, origin: "http://localhost:5173"}))
+app.use(cors({credentials: true, origin: "https://memora-frontend-ashy.vercel.app"}))
 app.use(cookieParser())
 
 app.use("/auth", authRoutes)
