@@ -73,10 +73,11 @@ const googleCallback = async (req, res) => {
 }
 
 const logout = async (req, res) => {
-    res.clearCookie("jwt_token", {
+    res.cookie("jwt_token", "", {
         httpOnly: true,
         secure: true,
         sameSite: "none",
+        expires: new Date(0),
         path: "/"
     });
     res.status(200).json({message: "Logged out successfully."})
