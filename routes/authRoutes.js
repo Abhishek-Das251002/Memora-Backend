@@ -6,6 +6,6 @@ const router = express.Router()
 
 router.get("/google", googleLogin)
 router.get("/google/callback", googleCallback)
-router.get("/logout", logout)
+router.post("/logout", logout)
 
 module.exports = router
