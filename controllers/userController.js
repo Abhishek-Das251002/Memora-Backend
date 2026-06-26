@@ -75,15 +75,15 @@ const updateAlbumDes = async (req, res) => {
 const addNewUserToAlbum = async (req, res) => {
     try {
         const {albumId} = req.params;
-        const albumToShare = await Album.findByIdAndUpdate(albumId, { $addToSet: { sharedUsers: {$each: req.body.sharedUsers }} }, {new: true})
+        const albumToShare = await Album.findOneAndUpdate({_id: albumId, ownerId: req.user.userId}, { $addToSet: { sharedUsers: {$each: req.body.sharedUsers }} }, {new: true})
         
         if(!albumToShare){
-            res.status(400).json("error occured while sharing album to users")
+            return res.status(403).json("unauthorized user")
         }else{
-            res.status(201).json("shared users added successfully", albumToShare)
+            return res.status(201).json("shared users added successfully", albumToShare)
         }
     } catch (error) {
-        console.log(error)
+        console.error(error)
         res.status(500).json({message: error.message})
     }
 }
