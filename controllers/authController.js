@@ -3,7 +3,7 @@ const dotenv = require("dotenv")
 const jwt = require("jsonwebtoken")
 const {setSecureCookie} = require("../services/setCookie")
 const { GallaryUser } = require("../models/user")
-
+const mongoose = require("mongoose")
 dotenv.config()
 PORT = process.env.PORT || 3000
 const JWT_Secret = process.env.JWT_SECRET
