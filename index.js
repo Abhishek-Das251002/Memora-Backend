@@ -10,7 +10,7 @@ const {connectToDb} = require("./dbConnection")
 const app = express()
 app.use(express.json())
 
-await connectToDb()
+connectToDb()
 
 PORT = process.env.PORT || 3000
 app.use(cors({credentials: true, origin: "https://memora-frontend-ashy.vercel.app"}))
