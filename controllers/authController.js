@@ -52,6 +52,7 @@ const googleCallback = async (req, res) => {
             return res.redirect(`${process.env.FRONTEND_URL}/dashboard`)
         }
 
+        console.log("readyState before query:", mongoose.connection.readyState);
         const userExist = await GallaryUser.findOne({email: googleUserDataResponse.data.email})
 
         if(userExist){
